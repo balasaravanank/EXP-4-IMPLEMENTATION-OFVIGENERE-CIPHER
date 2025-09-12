@@ -16,8 +16,84 @@ Step 3 :
 6.	Decryption reverses this process by identifying the original plaintext letter from the appropriate row based on the keyword letter.
 
 ## PROGRAM :
+```c
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#include <stdlib.h>
+
+void encipher();
+void decipher();
+
+int main() {
+    int choice;
+    while (1) {
+        printf("\n1. Encrypt Text");
+        printf("\t2. Decrypt Text");
+        printf("\t3. Exit");
+        printf("\n\nEnter Your Choice: ");
+        scanf("%d", &choice);
+
+        if (choice == 3)
+            return 0; // Proper exit
+        else if (choice == 1)
+            encipher();
+        else if (choice == 2)
+            decipher();
+        else
+            printf("Please Enter a Valid Option.\n");
+    }
+}
+
+void encipher() {
+    unsigned int i, j;
+    char input[50], key[10];
+
+    printf("\n\nEnter Plain Text: ");
+    scanf("%s", input);
+
+    printf("\nEnter Key Value: ");
+    scanf("%s", key);
+
+    printf("\nResultant Cipher Text: ");
+    for (i = 0, j = 0; i < strlen(input); i++, j++) {
+        if (j >= strlen(key)) {
+            j = 0;
+        }
+        printf("%c", 65 + (((toupper(input[i]) - 65) + (toupper(key[j]) - 65)) % 26));
+    }
+    printf("\n");
+}
+
+void decipher() {
+    unsigned int i, j;
+    char input[50], key[10];
+    int value;
+
+    printf("\n\nEnter Cipher Text: ");
+    scanf("%s", input);
+
+    printf("\nEnter the Key Value: ");
+    scanf("%s", key);
+
+    printf("\nDecrypted Plain Text: ");
+    for (i = 0, j = 0; i < strlen(input); i++, j++) {
+        if (j >= strlen(key)) {
+            j = 0; // Reset key index
+        }
+        value = (toupper(input[i]) - 65) - (toupper(key[j]) - 65);
+        if (value < 0) {
+            value += 26; // Handle negative wrap-around
+        }
+        printf("%c", 65 + (value % 26));
+    }
+    printf("\n");
+}
+```
 
 ## OUTPUT :
+<img width="879" height="1316" alt="Screenshot 2025-09-12 084039" src="https://github.com/user-attachments/assets/2d9f51ce-0fda-4703-b99c-8ba9e073bd2b" />
+
 
 ## RESULT:
 The program implementing the Vigenère cipher for encryption and decryption has been successfully	executed,	and	the	results	have	been	verified.
