@@ -92,7 +92,8 @@ void decipher() {
 ```
 
 ## OUTPUT :
-<img width="879" height="1316" alt="Screenshot 2025-09-12 084039" src="https://github.com/user-attachments/assets/2d9f51ce-0fda-4703-b99c-8ba9e073bd2b" />
+<img width="2797" height="1548" alt="image" src="https://github.com/user-attachments/assets/f81c1263-4a5a-4531-a889-66ac42d1cc18" />
+
 
 
 ## RESULT:
